@@ -11,6 +11,9 @@ function selfCheck(text: string): void {
   if (trimmed !== JOKE) {
     throw new Error("self-check failed: output does not match the joke verbatim");
   }
+  if (trimmed.includes("\n")) {
+    throw new Error("self-check failed: the joke must be a single line");
+  }
   if (trimmed.split(/\s+/).length < 10) {
     throw new Error("self-check failed: joke looks truncated");
   }
